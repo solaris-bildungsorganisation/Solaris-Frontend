@@ -2,9 +2,10 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import PATHS from './routes/paths';
-import VerifyEmail from './pages/VerifyEmail';
-import ForgotPassword from './pages/ForgotPassword';
-import ChangePassword from './pages/ChangePassword';
+import VerifyEmail from './pages/Authentication/VerifyEmail';
+import ForgotPassword from './pages/Authentication/ForgotPassword';
+import ChangePassword from './pages/Authentication/ChangePassword';
+import PasswordChanged from './pages/Authentication/PasswordChanged';
 import { getPasswordChecks } from './components/PasswordStrengthMeter';
 
 test('redirects / to /login by default', () => {
@@ -125,5 +126,23 @@ test('renders Change Password page with New Password, Confirm Password, and Chan
   );
   expect(
     screen.getByRole('button', { name: /^change password$/i })
+  ).toBeInTheDocument();
+});
+
+test('renders Password changed successfully! page and focuses heading on mount', () => {
+  render(<PasswordChanged />);
+  const heading = screen.getByRole('heading', {
+    level: 1,
+    name: /password changed successfully!/i,
+  });
+  expect(heading).toBeInTheDocument();
+  expect(heading).toHaveFocus();
+  expect(
+    screen.getByText(
+      /your password has been updated successfully\. you can now return and log in/i
+    )
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: /back to login/i })
   ).toBeInTheDocument();
 });

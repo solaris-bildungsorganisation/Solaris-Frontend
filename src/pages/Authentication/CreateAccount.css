@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Solaris Education - Create Your Account Form Stylesheet
+   (Shared split-screen layout, InputField, PasswordField, and PrimaryButton
+    styles live in src/components/AuthLayout.css)
+   ========================================================================== */
+
+.form-header {
+  margin-bottom: 18px;
+}
+
+.form-title {
+  margin: 0 0 6px 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #2c4a6e;
+}
+
+.form-subtitle {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #5a6577;
+}
+
+.create-account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+/* ==========================================================================
+   Terms Checkbox & Verification Notice
+   ========================================================================== */
+
+.terms-field {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.terms-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.terms-checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: #1b2a41;
+  border: 1px solid #d5d9e0;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.terms-checkbox:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 2px;
+}
+
+.terms-checkbox--error {
+  outline: 1.5px solid #dc2626;
+}
+
+.terms-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #4b5563;
+}
+
+.terms-link {
+  color: #2c4a6e;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.terms-link:hover {
+  color: #0f5c63;
+}
+
+.terms-link:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Conditional Green Verification Notice */
+.verification-notice {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: #bfe3c9;
+  color: #1f6b45;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .form-title {
+    font-size: 24px;
+  }
+}

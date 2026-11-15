@@ -7,6 +7,7 @@ export const PATHS = {
   SIGNUP: '/signup',
   VERIFY_EMAIL: '/verify-email',
   CHANGE_PASSWORD: '/change-password',
+  PASSWORD_CHANGED: '/password-changed',
   FORGOT_PASSWORD: '/forgot-password',
 };
 

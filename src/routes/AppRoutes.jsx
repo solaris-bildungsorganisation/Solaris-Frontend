@@ -8,11 +8,14 @@ import {
   useLocation,
 } from 'react-router-dom';
 import PATHS from './paths';
-import Login from '../pages/Login';
-import CreateAccount from '../pages/CreateAccount';
-import VerifyEmail, { AuthFlowContext } from '../pages/VerifyEmail';
-import ChangePassword from '../pages/ChangePassword';
-import ForgotPassword from '../pages/ForgotPassword';
+import Login from '../pages/Authentication/Login';
+import CreateAccount from '../pages/Authentication/CreateAccount';
+import VerifyEmail, {
+  AuthFlowContext,
+} from '../pages/Authentication/VerifyEmail';
+import ChangePassword from '../pages/Authentication/ChangePassword';
+import PasswordChanged from '../pages/Authentication/PasswordChanged';
+import ForgotPassword from '../pages/Authentication/ForgotPassword';
 
 /**
  * Scrolls the window to the top whenever the active route pathname changes.
@@ -31,10 +34,11 @@ export function ScrollToTop() {
 
 /**
  * Core route tree in the exact flow order:
- * 1. Login           -> /login (default: / redirects to /login)
- * 2. Sign up         -> /signup
- * 3. Verify Email    -> /verify-email
- * 4. Change Password -> /change-password
+ * 1. Login            -> /login (default: / redirects to /login)
+ * 2. Sign up          -> /signup
+ * 3. Verify Email     -> /verify-email
+ * 4. Change Password  -> /change-password
+ * 5. Password Changed -> /password-changed
  * Extra: Forgot Password -> /forgot-password
  */
 export function RouteTree() {
@@ -54,6 +58,7 @@ export function RouteTree() {
         <Route path={PATHS.SIGNUP} element={<CreateAccount />} />
         <Route path={PATHS.VERIFY_EMAIL} element={<VerifyEmail />} />
         <Route path={PATHS.CHANGE_PASSWORD} element={<ChangePassword />} />
+        <Route path={PATHS.PASSWORD_CHANGED} element={<PasswordChanged />} />
         <Route path={PATHS.FORGOT_PASSWORD} element={<ForgotPassword />} />
         <Route path="*" element={<Navigate to={PATHS.LOGIN} replace />} />
       </Routes>
