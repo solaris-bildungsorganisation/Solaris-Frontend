@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Solaris Education - Log In Page Stylesheet (/login)
+   (Shared layout, .form-header, InputField, PasswordField, and PrimaryButton
+    styles live in src/components/AuthLayout.css)
+   ========================================================================== */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.login-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: -4px;
+  margin-bottom: 2px;
+}
+
+.forgot-password-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f5c63;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.forgot-password-link:hover {
+  color: #2c4a6e;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.forgot-password-link:focus-visible {
+  outline: 2px solid #0f5c63;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Tablet & Mobile (<= 1023px): Slightly reduced vertical field gap (~14% less)
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .login-form {
+    gap: 12px;
+  }
+}

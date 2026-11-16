@@ -13,8 +13,7 @@ import PATHS from '../../routes/paths';
 
 import emailIcon from '../../assets/mail (1).svg';
 
-import './CreateAccount.css';
-import './PasswordRecovery.css';
+import './Login.css';
 
 const ENABLE_VALIDATION = false;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

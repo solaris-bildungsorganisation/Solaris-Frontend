@@ -6,7 +6,7 @@ import VerifyEmail from './pages/Authentication/VerifyEmail';
 import ForgotPassword from './pages/Authentication/ForgotPassword';
 import ChangePassword from './pages/Authentication/ChangePassword';
 import PasswordChanged from './pages/Authentication/PasswordChanged';
-import { getPasswordChecks } from './components/PasswordStrengthMeter';
+import { getPasswordChecks } from './components/PasswordStrength';
 
 test('redirects / to /login by default', () => {
   render(

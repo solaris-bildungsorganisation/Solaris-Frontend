@@ -6,6 +6,9 @@ import {
 } from 'react-router-dom';
 import AuthLayout from '../../components/AuthLayout';
 import PasswordField from '../../components/PasswordField';
+import PasswordStrength, {
+  getPasswordChecks,
+} from '../../components/PasswordStrength';
 import PrimaryButton from '../../components/PrimaryButton';
 import PATHS from '../../routes/paths';
 
@@ -43,11 +46,15 @@ function ChangePasswordContent({ onPasswordChanged }) {
 
   const validateForm = () => {
     const nextErrors = {};
+    const passwordChecks = getPasswordChecks(newPassword);
 
     if (!newPassword) {
       nextErrors.newPassword = 'New password is required.';
-    } else if (newPassword.length < 8) {
+    } else if (!passwordChecks.minLength) {
       nextErrors.newPassword = 'Password must be at least 8 characters.';
+    } else if (!passwordChecks.hasNumber || !passwordChecks.hasSymbol) {
+      nextErrors.newPassword =
+        'Password must include at least 8 characters, a number, and a symbol.';
     }
 
     if (!confirmPassword) {
@@ -123,6 +130,8 @@ function ChangePasswordContent({ onPasswordChanged }) {
             isVisible={showNewPassword}
             onToggleVisibility={() => setShowNewPassword((prev) => !prev)}
           />
+
+          <PasswordStrength password={newPassword} />
 
           <PasswordField
             id="confirmPassword"

@@ -6,7 +6,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import AuthLayout from '../../components/AuthLayout';
-import OtpInput from '../../components/OtpInput';
+import OtpInputGroup from '../../components/OtpInputGroup';
 import PATHS from '../../routes/paths';
 
 import verifyEmailIllustration from '../../assets/image.svg';
@@ -28,7 +28,8 @@ export const AuthFlowContext = createContext({
 
 /**
  * Solaris Education - Step 3: "Verify Your Email Address" Page (/verify-email)
- * Uses the shared AuthLayout component and the reusable OtpInput component.
+ * Handles Enter ('default'), Wrong ('error'), and Valid ('valid') OTP states
+ * in a single component via local `status` state.
  */
 function VerifyEmailContent({
   email: emailProp,
@@ -50,6 +51,7 @@ function VerifyEmailContent({
     DEFAULT_EMAIL;
 
   const [otpValues, setOtpValues] = useState(() => Array(OTP_LENGTH).fill(''));
+  const [status, setStatus] = useState('default'); // 'default' | 'error' | 'valid'
   const [error, setError] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
   const [resendCooldown, setResendCooldown] = useState(0);
@@ -68,8 +70,9 @@ function VerifyEmailContent({
   }, [resendCooldown]);
 
   const handleOtpChange = (nextValues) => {
-    // Clear error state once user begins typing a new digit
-    if (error && nextValues.some((val) => val !== '')) {
+    // Reset status/error once user begins typing a new digit
+    if (status !== 'default' && nextValues.some((val) => val !== '')) {
+      setStatus('default');
       setError('');
     }
     setOtpValues(nextValues);
@@ -82,6 +85,7 @@ function VerifyEmailContent({
 
     setIsVerifying(true);
     setError('');
+    setStatus('default');
 
     try {
       if (DEV_BYPASS) {
@@ -97,6 +101,8 @@ function VerifyEmailContent({
         }
       }
 
+      setStatus('valid');
+
       // TODO: navigate to the next step after successful email verification
       if (onVerified) {
         onVerified(code);
@@ -104,6 +110,7 @@ function VerifyEmailContent({
         navigate(PATHS.CHANGE_PASSWORD, { state: { email: resolvedEmail } });
       }
     } catch (err) {
+      setStatus('error');
       setError('Invalid code. Please try again.');
       setOtpValues(Array(OTP_LENGTH).fill(''));
     } finally {
@@ -116,6 +123,7 @@ function VerifyEmailContent({
       return;
     }
 
+    setStatus('default');
     setError('');
     setResendCooldown(RESEND_COOLDOWN_SECONDS);
 
@@ -152,17 +160,17 @@ function VerifyEmailContent({
 
         {/* 4. 6-Box OTP Input & Resend Section */}
         <div className="verify-otp-section">
-          <OtpInput
+          <OtpInputGroup
             length={OTP_LENGTH}
-            values={otpValues}
+            value={otpValues}
             onChange={handleOtpChange}
             onComplete={handleVerify}
-            hasError={Boolean(error)}
+            status={status}
             disabled={isVerifying}
             errorId="otp-error-message"
           />
 
-          {error && (
+          {status === 'error' && error && (
             <p id="otp-error-message" className="verify-error" role="alert">
               {error}
             </p>

@@ -8,9 +8,9 @@ import {
 import AuthLayout from '../../components/AuthLayout';
 import InputField from '../../components/InputField';
 import PasswordField from '../../components/PasswordField';
-import PasswordStrengthMeter, {
+import PasswordStrength, {
   getPasswordChecks,
-} from '../../components/PasswordStrengthMeter';
+} from '../../components/PasswordStrength';
 import PrimaryButton from '../../components/PrimaryButton';
 import VerificationNotice from '../../components/VerificationNotice';
 import { AuthFlowContext } from './VerifyEmail';
@@ -196,7 +196,7 @@ function CreateAccountContent({ onAccountCreated }) {
           onToggleVisibility={() => setShowPassword((prev) => !prev)}
         />
 
-        <PasswordStrengthMeter password={password} />
+        <PasswordStrength password={password} />
 
         <PasswordField
           id="confirmPassword"
