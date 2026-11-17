@@ -1,0 +1,354 @@
+/* =========================================================================
+   SHARED SPACE ELEMENTS STYLES (Logo, Line Astronaut, Planets, Background)
+   ========================================================================= */
+
+.error-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafbf9;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Solaris Education Logo (Top Left) */
+.solaris-logo {
+  position: absolute;
+  top: clamp(18px, 3.5vh, 36px);
+  left: clamp(18px, 3.8vw, 48px);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.solaris-logo-icon {
+  width: clamp(42px, 5vw, 56px);
+  height: clamp(42px, 5vw, 56px);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
+  animation: logoStarPulse 6s ease-in-out infinite;
+}
+
+.solaris-logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.solaris-brand {
+  font-family: 'Switzer', sans-serif;
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.solaris-sub {
+  font-family: 'Switzer', sans-serif;
+  font-size: clamp(6px, 0.7vw, 7.5px);
+  font-weight: 600;
+  letter-spacing: 2.6px;
+  margin-top: 3px;
+  opacity: 0.9;
+}
+
+/* Concentric Rings & Floating Warning Triangles */
+.animated-space-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.concentric-rings {
+  --ring-unit: clamp(110px, 19vmin, 185px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ringBreathe 6s ease-in-out infinite;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Equal spacing between every circle (2x, 3x, 4x, 5x of --ring-unit) & exact flat white/off-white shades from reference */
+.ring-4 {
+  z-index: 1;
+  width: calc(var(--ring-unit) * 5);
+  height: calc(var(--ring-unit) * 5);
+  background-color: #f5f7f4;
+}
+
+.ring-3 {
+  z-index: 2;
+  width: calc(var(--ring-unit) * 4);
+  height: calc(var(--ring-unit) * 4);
+  background-color: #f0f2ef;
+}
+
+.ring-2 {
+  z-index: 3;
+  width: calc(var(--ring-unit) * 3);
+  height: calc(var(--ring-unit) * 3);
+  background-color: #eceeeB;
+}
+
+.ring-1 {
+  z-index: 4;
+  width: calc(var(--ring-unit) * 2);
+  height: calc(var(--ring-unit) * 2);
+  background-color: #e7e9e6;
+}
+
+.floating-warning-icon {
+  position: absolute;
+  z-index: 3;
+  opacity: 0.85;
+  animation-name: triangleFloat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.floating-warning-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Line-Art Floating Astronaut */
+.line-astronaut-wrapper {
+  position: absolute;
+  top: clamp(65px, 12vh, 140px);
+  left: -8px;
+  width: clamp(145px, 27vw, 370px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.line-astronaut-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.astronaut-body-group {
+  transform-origin: 250px 140px;
+  animation: astronautZeroG 6.5s ease-in-out infinite;
+}
+
+.astronaut-tether-path {
+  animation: tetherWave 6.5s ease-in-out infinite;
+}
+
+/* 3D Planet rotation */
+.planet-rotating-group {
+  transform-origin: 100px 100px;
+  animation: planetSlowSpin 28s linear infinite;
+}
+
+/* Shared CTA Button & Center Typography */
+.center-content {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 92vw;
+}
+
+.title-ooops {
+  font-size: clamp(24px, 3vw, 35px);
+  font-weight: 800;
+  color: #214360;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  letter-spacing: -0.4px;
+}
+
+.subtitle-not-found {
+  font-size: clamp(17px, 2vw, 23px);
+  font-weight: 700;
+  color: #24272a;
+  margin-bottom: clamp(12px, 2vh, 18px);
+  letter-spacing: -0.2px;
+}
+
+.desc-line {
+  font-size: clamp(13px, 1.3vw, 15.5px);
+  font-weight: 600;
+  color: #1f2225;
+  line-height: 1.55;
+  margin-bottom: 11px;
+}
+
+.desc-line + .desc-line {
+  margin-bottom: 4px;
+}
+
+.home-action-btn {
+  margin-top: clamp(14px, 2.2vh, 22px);
+  min-width: clamp(138px, 14vw, 162px);
+  height: clamp(38px, 4.8vh, 44px);
+  padding: 0 26px;
+  border: none;
+  border-radius: 7px;
+  background: radial-gradient(circle at 50% 35%, #2b5278 0%, #16314c 68%, #0d2034 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: clamp(12.5px, 1.1vw, 13.5px);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(15, 36, 58, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.home-action-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(15, 36, 58, 0.38), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  filter: brightness(1.08);
+}
+
+.home-action-btn:active {
+  transform: translateY(0);
+}
+
+/* Shared Keyframes */
+@keyframes astronautZeroG {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(10px, -14px) rotate(-3.5deg);
+  }
+  66% {
+    transform: translate(-6px, 9px) rotate(2.5deg);
+  }
+}
+
+@keyframes tetherWave {
+  0%, 100% {
+    transform: translate(0px, 0px) scaleY(1);
+  }
+  50% {
+    transform: translate(5px, -8px) scaleY(1.03);
+  }
+}
+
+@keyframes triangleFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(var(--init-rot, 0deg)) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) translateX(7px) rotate(calc(var(--init-rot, 0deg) + 14deg)) scale(1.06);
+  }
+}
+
+@keyframes ringBreathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.045);
+  }
+}
+
+@keyframes centerPlanetBob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(6deg);
+  }
+}
+
+@keyframes planetSlowSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes extraPlanetOrbit1 {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-12px, 14px) rotate(-12deg);
+  }
+}
+
+@keyframes extraPlanetOrbit2 {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(12px, -14px) rotate(14deg);
+  }
+}
+
+@keyframes fourFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes logoStarPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(3deg);
+  }
+}
+
+@media (max-width: 992px) {
+  .line-astronaut-wrapper {
+    top: 10%;
+    width: clamp(150px, 25vw, 240px);
+  }
+
+  .center-content {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .line-astronaut-wrapper {
+    top: 11%;
+    left: -12px;
+    width: 145px;
+  }
+
+  .center-content {
+    margin-top: 55px;
+  }
+
+  .floating-warning-icon {
+    transform: scale(0.75);
+  }
+}
+

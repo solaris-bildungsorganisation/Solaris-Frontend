@@ -1,0 +1,96 @@
+/* =========================================================================
+   PAGE 3 STYLES: Olive-Slate Open-Top 3D 404 + Center Planet + 2 Floating Planets
+   ========================================================================= */
+
+.page-variant-3 .hero-404-planet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: clamp(4px, 1vh, 8px);
+}
+
+.page-variant-3 .open-four-digit {
+  width: clamp(78px, 12vw, 134px);
+  height: auto;
+  display: block;
+  user-select: none;
+  filter: drop-shadow(0 5px 8px rgba(24, 38, 48, 0.14));
+  animation: fourFloat 5.5s ease-in-out infinite;
+}
+
+.page-variant-3 .right-open-four {
+  margin-left: -4px;
+}
+
+.page-variant-3 .center-planet-slot {
+  margin: 0 clamp(-25px, -2vw, -14px);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: centerPlanetBob 5s ease-in-out infinite;
+}
+
+.page-variant-3 .center-planet-size {
+  width: clamp(82px, 12.8vw, 144px);
+  height: clamp(82px, 12.8vw, 144px);
+}
+
+.page-variant-3 .desc-line {
+  font-weight: 600;
+  color: #1b1e21;
+}
+
+.page-variant-3 .floating-extra-planet {
+  position: absolute;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.page-variant-3 .extra-planet-size {
+  width: clamp(52px, 8.2vw, 94px);
+  height: clamp(52px, 8.2vw, 94px);
+}
+
+.page-variant-3 .planet-mid-right {
+  top: clamp(20%, 26vh, 28%);
+  right: clamp(6%, 13vw, 14.5%);
+  animation: extraPlanetOrbit1 7.8s ease-in-out infinite;
+}
+
+.page-variant-3 .planet-bottom-left-p3 {
+  bottom: clamp(16%, 22vh, 24.5%);
+  left: clamp(7%, 13vw, 14%);
+  animation: extraPlanetOrbit2 8.5s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .page-variant-3 .open-four-digit {
+    width: 72px;
+  }
+
+  .page-variant-3 .center-planet-size {
+    width: 76px;
+    height: 76px;
+  }
+
+  .page-variant-3 .center-planet-slot {
+    margin: 0 -12px;
+  }
+
+  .page-variant-3 .extra-planet-size {
+    width: 52px;
+    height: 52px;
+  }
+
+  .page-variant-3 .planet-mid-right {
+    top: 18%;
+    right: 6%;
+  }
+
+  .page-variant-3 .planet-bottom-left-p3 {
+    bottom: 11%;
+    left: 8%;
+  }
+}
