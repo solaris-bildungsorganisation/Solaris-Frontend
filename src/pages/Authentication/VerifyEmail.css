@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Solaris Education - Verify Your Email Address Stylesheet (/verify-email)
+   (Shared split-screen layout and centered step header styles live in
+    src/components/AuthLayout.css; OTP box styles live in
+    src/components/OtpInputGroup.css)
+   ========================================================================== */
+
+.verify-email-card {
+  width: 100%;
+  max-width: 444px;
+}
+
+.verify-email-highlight {
+  color: #0f5c63;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.verify-otp-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Inline Error Message */
+.verify-error {
+  margin: 10px 0 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #dc2626;
+  text-align: left;
+}
+
+/* Resend Code Row (left-aligned with OTP boxes) */
+.verify-resend-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 18px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.verify-resend-prompt {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2c4a6e;
+}
+
+.verify-resend-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #c9a24a;
+  cursor: pointer;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.verify-resend-btn:hover:not(:disabled) {
+  color: #b08b36;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.verify-resend-btn:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.verify-resend-btn:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Tablet & Mobile (<= 1023px)
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .verify-email-card {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 767px) {
+  .verify-resend-row,
+  .verify-resend-prompt,
+  .verify-resend-btn {
+    font-size: 13px;
+  }
+}

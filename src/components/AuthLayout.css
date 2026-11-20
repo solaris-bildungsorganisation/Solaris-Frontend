@@ -1,0 +1,753 @@
+/* ==========================================================================
+   Solaris Education - Shared AuthLayout Stylesheet
+   ==========================================================================
+   Standardized Responsive Breakpoints (Desktop-First):
+   - Desktop:      >= 1024px (base styles, pixel-identical to desktop design)
+   - Tablet:       @media (max-width: 1023px) (hero panel hidden, single centered column)
+   - Mobile:       @media (max-width: 767px)
+   - Small Mobile: @media (max-width: 380px)
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.auth-layout-page {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0b1026;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Left Hero Panel (~51% visible width on desktop)
+   ========================================================================== */
+
+.hero-panel {
+  position: relative;
+  width: 53%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #0b1026;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 16, 42, 0.35) 0%,
+    rgba(12, 16, 42, 0.08) 45%,
+    rgba(10, 15, 38, 0.55) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 44px 64px 30px 52px;
+}
+
+.hero-top {
+  max-width: 520px;
+}
+
+/* Top-left Solaris Wordmark + Divider + Tagline */
+.hero-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.hero-brand-wordmark {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.hero-brand-divider {
+  width: 2px;
+  height: 32px;
+  background-color: #38b2ac;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.hero-brand-tagline {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Hero Heading & Subtitle */
+.hero-heading {
+  margin: 0 0 12px 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #5eead4;
+}
+
+/* Bottom Steps & Pill Badge */
+.hero-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-top: auto;
+  padding-right: 16px;
+}
+
+.hero-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+}
+
+.hero-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 82px;
+}
+
+/* Crop container displaying the exact 50x50 glass icon tile from the 161x200 Figma SVG */
+.hero-step-tile-box {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(7, 13, 33, 0.45);
+  background: rgba(75, 150, 151, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.hero-step-tile-img {
+  position: absolute;
+  width: 161px;
+  max-width: none;
+  left: -54.5px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-step-tile-img--learning {
+  top: -43.2px;
+  height: 204px;
+}
+
+.hero-step-tile-img--development {
+  top: -39.6px;
+  height: 200px;
+}
+
+.hero-step-tile-img--empowerment {
+  top: -38.3px;
+  height: 199px;
+}
+
+.hero-step-label {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #f2f5f7;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.hero-step-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.hero-badge-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Right Panel (~49% width on desktop, rounded left edge)
+   ========================================================================== */
+
+.form-panel {
+  position: relative;
+  z-index: 3;
+  width: 49%;
+  margin-left: -2%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+  box-shadow: -12px 0 32px rgba(7, 12, 30, 0.28);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 44px 16px 52px;
+}
+
+/* Top-right Language Selector Bar */
+.form-panel-topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.language-select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  padding: 6px 30px 6px 14px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.08);
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.language-select:hover {
+  border-color: #cbd5e1;
+}
+
+.language-select:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 2px;
+}
+
+.language-select-chevron {
+  position: absolute;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Panel Body & Content Card */
+.form-panel-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  padding: 4px 0 12px;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 444px;
+}
+
+.form-logo-wrapper {
+  margin-bottom: 6px;
+  margin-left: -6px;
+}
+
+.form-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.form-logo-link:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 2px;
+}
+
+.form-logo {
+  display: block;
+  height: 58px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Shared Form Header (Login & CreateAccount)
+   ========================================================================== */
+
+.form-header {
+  margin-bottom: 18px;
+}
+
+.form-title {
+  margin: 0 0 6px 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #2c4a6e;
+}
+
+.form-subtitle {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #5a6577;
+}
+
+/* ==========================================================================
+   Shared Centered Step Header (VerifyEmail, ForgotPassword, ChangePassword)
+   ========================================================================== */
+
+.auth-step-content,
+.verify-email-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.auth-illustration-wrapper,
+.verify-illustration-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 135px;
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: #eaf0f6;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.auth-illustration,
+.verify-illustration {
+  display: block;
+  width: 135px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.auth-step-heading,
+.verify-heading {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #2c4a6e;
+  text-align: center;
+}
+
+.auth-step-description,
+.verify-description {
+  margin: 0 0 26px 0;
+  max-width: 410px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #5a6577;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Shared Form Inputs, Password Toggle & Primary Gradient Button
+   ========================================================================== */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  min-height: 44px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #d5d9e0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: #2c4a6e;
+  box-shadow: 0 0 0 3px rgba(44, 74, 110, 0.14);
+}
+
+.input-wrapper--error {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+}
+
+.input-wrapper--error:focus-within {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18);
+}
+
+.input-icon-left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 13px;
+  padding-right: 9px;
+  color: #737b83;
+  flex-shrink: 0;
+}
+
+.input-icon-img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.form-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 12px 0 0;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: #111827;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #8e98a8;
+}
+
+.form-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.password-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 34px;
+  margin-right: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #737b83;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.password-toggle-btn:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.password-toggle-btn:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 1px;
+}
+
+.field-error {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #dc2626;
+  text-align: left;
+}
+
+/* Shared Primary Dark-Navy Gradient Button */
+.submit-btn {
+  width: 100%;
+  height: 41px;
+  margin-top: 2px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #1b2a41 0%, #2f4a6b 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(27, 42, 65, 0.22);
+  transition: filter 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0.5px);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 2px;
+}
+
+.submit-btn:disabled {
+  opacity: 0.68;
+  cursor: not-allowed;
+}
+
+/* Shared Auth Prompt & Teal Link */
+.login-prompt {
+  margin: 4px 0 0 0;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.login-link {
+  color: #0f5c63;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.login-link:focus-visible {
+  outline: 2px solid #0f5c63;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Bottom Footer Row (with thin light-gray divider line above)
+   ========================================================================== */
+
+.form-panel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.footer-copyright {
+  color: #6b7280;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-link {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+  color: #2c4a6e;
+  text-decoration: underline;
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid #2c4a6e;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Tablet & Below (<= 1023px): Hide hero panel, single centered column
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .auth-layout-page {
+    flex-direction: column;
+    background-color: #ffffff;
+  }
+
+  .hero-panel {
+    display: none;
+  }
+
+  .form-panel {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 20px 24px;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .form-panel-body {
+    padding: 12px 0 20px;
+  }
+
+  .form-card {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .form-title {
+    font-size: 26px;
+  }
+
+  .input-wrapper {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    min-height: 44px;
+    height: 44px;
+  }
+}
+
+/* ==========================================================================
+   Mobile (<= 767px)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .form-panel {
+    padding: 16px;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+
+  .auth-step-heading,
+  .verify-heading {
+    font-size: 22px;
+  }
+
+  .auth-step-description,
+  .verify-description {
+    margin-bottom: 20px;
+  }
+
+  .form-panel-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* ==========================================================================
+   Small Mobile (<= 380px)
+   ========================================================================== */
+
+@media (max-width: 380px) {
+  .form-logo {
+    height: 50px;
+  }
+
+  .auth-step-heading,
+  .verify-heading {
+    font-size: 20px;
+  }
+}
