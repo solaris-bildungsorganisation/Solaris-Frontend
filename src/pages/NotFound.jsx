@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   AnimatedBackground,
@@ -32,19 +32,14 @@ const BTN_CLASSES =
 const NotFound = ({ variant, initialLang = 'en' }) => {
   const navigate = useNavigate();
 
-  const [activeVariant, setActiveVariant] = useState(() => {
-    if (variant >= 1 && variant <= 4) return variant;
-    return Math.floor(Math.random() * 4) + 1;
-  });
+  const [randomVariant, setRandomVariant] = useState(
+    () => Math.floor(Math.random() * 4) + 1
+  );
+  const activeVariant =
+    variant >= 1 && variant <= 4 ? variant : randomVariant;
 
   const [lang, setLang] = useState(initialLang);
   const isAr = lang === 'ar';
-
-  useEffect(() => {
-    if (variant >= 1 && variant <= 4) {
-      setActiveVariant(variant);
-    }
-  }, [variant]);
 
   useEffect(() => {
     document.title = isAr
@@ -64,15 +59,15 @@ const NotFound = ({ variant, initialLang = 'en' }) => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === '1') setActiveVariant(1);
-      if (e.key === '2') setActiveVariant(2);
-      if (e.key === '3') setActiveVariant(3);
-      if (e.key === '4') setActiveVariant(4);
+      if (e.key === '1') setRandomVariant(1);
+      if (e.key === '2') setRandomVariant(2);
+      if (e.key === '3') setRandomVariant(3);
+      if (e.key === '4') setRandomVariant(4);
       if (e.key === 'ArrowRight') {
-        setActiveVariant((prev) => (prev === 4 ? 1 : prev + 1));
+        setRandomVariant((prev) => (prev === 4 ? 1 : prev + 1));
       }
       if (e.key === 'ArrowLeft') {
-        setActiveVariant((prev) => (prev === 1 ? 4 : prev - 1));
+        setRandomVariant((prev) => (prev === 1 ? 4 : prev - 1));
       }
       const k = e.key.toLowerCase();
       if (k === 'a' || k === 'l' || k === '0' || k === 'ش' || k === 'م' || k === 'ع') {

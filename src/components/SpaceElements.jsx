@@ -1,5 +1,3 @@
-import React from 'react';
-
 /* =========================================================================
    1. SOLARIS EDUCATION LOGO (Top-left compass star + SOLARIS EDUCATION text)
    ========================================================================= */
